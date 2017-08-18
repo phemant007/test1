@@ -1,0 +1,33 @@
+#makedir()
+#{
+#!/bin/bash
+#	BKP="BACKUP"
+#	/bin/mkdir $BKP
+#	echo "backup folder is created $BKP" 
+#}
+
+TIME=`date +%M-%d-%b-%y`            # This Command will add date in Backup File Name.
+FILENAME=etc."$TIME".tar.gz    # Here i define Backup file name format.
+SOURCE=/etc                    # Location of Important Data Directory (Source of backup).
+DESTI=/BACKUP            # Destination of backup file.
+if [ -d "/BACKUP" ]; then
+echo "Yes, Directory $DESTI is present"
+else
+echo "Directory $DESTI is not present"
+/bin/mkdir $DESTI
+echo "Creating directory please wait"
+sleep 1
+echo "$DESTI directory has been created"
+fi	
+	cd /BACKUP ; $ls
+	LS=`/bin/ls`
+	if [ -f $LS == "$FILENAME" ]; then
+ 	echo " Backup of $FILENAME already taken"	
+	else
+	echo "Taking backup please wait ...."
+	sleep 2
+	/bin/tar -czf $DESTI/$FILENAME $SOURCE	
+	echo "Backup has been taken $FILENAME sucessfully !!!"
+	exit
+fi
+

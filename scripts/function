@@ -1,0 +1,13 @@
+hello()
+{
+ echo "hello good morning "
+ echo "today is holiday"
+ date
+}
+
+runbkp()
+{
+ echo "taking backup for /etc/*"
+ sleep 10
+ echo " backup is complete!!!!!!!!!"
+}
